@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const accordions = document.querySelectorAll('.accordion__btn');
   const accordionContents = document.querySelectorAll('.accordion__content');
 
+  // iterate over all the buttons of the accordion
   accordions.forEach((itemAcc) => {
     itemAcc.addEventListener('click', (event) => {
       event.preventDefault();
@@ -16,19 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
         context.style.maxHeight = context.scrollHeight + 'px';
         itemAcc.classList.add('is-open');
       }
-
+      // when opening a new section of the accordion, close the previous one
       accordionContents.forEach((itemCont) => {
         if (itemCont !== context) {
           itemCont.style.maxHeight = null;
           itemCont.previousElementSibling.classList.remove('is-open');
         }
       });
-
-      // accordions.forEach((item) => {
-      //   if (item !== itemAcc) {
-      //     item.classList.remove('is-open');
-      //   }
-      // });
     });
   });
 });
